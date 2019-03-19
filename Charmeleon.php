@@ -1,5 +1,4 @@
 <?php 
-	require 'pokemon.php';
 class Charmeleon extends Pokemon
 {
 	public $species = 'charmeleon';
