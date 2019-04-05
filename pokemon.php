@@ -11,7 +11,7 @@ class Pokemon
   public $resistance;
   public $move1;
   public $move2;
-  #makes a pokemon.
+  //makes a pokemon.
   public function __construct($name, $specie, $energytype, $hitpoints,
                               $currentHealth, $weakness, $resistance,
                           	  $move1, $move2)

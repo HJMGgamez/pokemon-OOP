@@ -1,11 +1,11 @@
 <?php 
-#makes a pokemon charmeleon and extends the pokemon class
+//makes a pokemon charmeleon and extends the pokemon class
 class Charmeleon extends Pokemon
 {
 
   public $specie = 'Charmeleon';
   public $hitpoints = 60;
-  #makes a charmeleon
+  //makes a charmeleon
   public function __construct($name, $currentHealth)
   {
     $this->weakness = new Weakness(
@@ -21,7 +21,7 @@ class Charmeleon extends Pokemon
     $this->fire = new Energytype('fire');
 	parent::__construct($name, $this->specie, $this->fire, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
   }
-  #will calulate the damage the pokemon takes
+  //will calulate the damage the pokemon takes
   public static function damageCalculationC($Damage, $energytype, $weakness, $multiplier, $resistance, $reduce, $health)
   {
   	if ($energytype === $weakness) {

@@ -14,11 +14,12 @@
 		require 'Resistance.php';
 		require 'Moves.php';
 		require 'Energytype.php';
-
+		//adds the pikachu dave.
 		$dave = new Pikachu(
 			'dave',
 			60
 		);
+		//adds the charmeleon jan.
 		$jan = new Charmeleon(
 			'jan',
 			60
