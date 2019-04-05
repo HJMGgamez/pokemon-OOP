@@ -23,8 +23,8 @@
 			'jan',
 			60
 		);
-    	echo charmeleon::damageCalculationC($dave->move2->damage,$dave->lighting->Type);
-    	echo pikachu::damageCalculationP($jan->move2->damage,$jan->fire->Type);
+    	echo $jan->name. charmeleon::damageCalculationC($dave->move2->damage,$dave->lighting->Type,$jan->weakness->weakness, $jan->weakness->multiplier, $jan->resistance->resistance, $jan->resistance->reduce, $dave->currentHealth). '<br>';
+    	echo $dave->name. pikachu::damageCalculationP($jan->move2->damage,$jan->fire->Type,$dave->weakness->weakness, $dave->weakness->multiplier, $dave->resistance->resistance, $dave->resistance->reduce, $jan->currentHealth);
 	?>
     <main>
       <section>

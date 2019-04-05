@@ -3,38 +3,33 @@ class Pikachu extends Pokemon
 {
   public $specie = 'Pikachu';
   public $hitpoints = 60;
-  public $Move1;
-  public $Move2;
-  public $lighting;
-  public $Weakness;
-  public $resistance;
+
 
   public function __construct($name, $currentHealth)
   {
-  	$this->Weakness = new Weakness(
-		'fire',
-		1.5
-	);
-	$this->Resistance = new Resistance(
-		'fighting',
-		20
-	);
-  	$this->Move1 = new Moves('pika punch', 20);
-  	$this->Move2 = new Moves('Electric Ring', 50);
-  	$this->lighting = new Energytype('lighting');
-	parent::__construct($name, $this->specie, $this->lighting, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->Move1 , $this->Move2);
+    $this->weakness = new Weakness(
+        'fire',
+        1.5
+    );
+    $this->resistance = new Resistance(
+        'fighting',
+        20
+    );
+    $this->move1 = new Moves('pika punch', 20);
+    $this->move2 = new Moves('Electric Ring', 50);
+    $this->lighting = new Energytype('lighting');
+	parent::__construct($name, $this->specie, $this->lighting, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
   }
-  public static function damageCalculationP($damage, $energytype)
+  public static function damageCalculationP($Damage, $energytype, $weakness, $multiplier, $resistance, $reduce, $health)
   {
-    if ($energytype === $weakness->Weakness) {
-      $damage = $damage * $weakness->Multiplier;
+  	if ($energytype === $weakness) {
+      $dam = $Damage * $multiplier;
+    } elseif ($energytype === $resistance) {
+    	$dam = $Damage - $reduce;
+    } else{
+      $dam = $Damage; 
     }
-    if ($energytype === $Resistance->Resistance) {
-      $damage = $damage - $Resistance->Reduce;
-    }
-    if ($damage < 0) {
-      $damage = 0;
-    }
-    return $damage;
+    $cHealth = $health - $dam ;
+    return ' doet '.$dam. ' damage health is '.$cHealth;
   }
 }
