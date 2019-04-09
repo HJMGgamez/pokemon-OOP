@@ -26,4 +26,6 @@ class Pokemon
     $this->move1 = $move1;
     $this->move2 = $move2;
   }
+    //will calulate the damage the pokemon takes
+
 }

@@ -19,19 +19,18 @@ class Pikachu extends Pokemon
     $this->move1 = new Moves('pika punch', 20);
     $this->move2 = new Moves('Electric Ring', 50);
     $this->lighting = new Energytype('lighting');
-	parent::__construct($name, $this->specie, $this->lighting, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
+	parent::__construct($name, $this->specie, $this->energytype, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
   }
-  //will calulate the damage the pokemon takes
-  public static function damageCalculationP($Damage, $energytype, $weakness, $multiplier, $resistance, $reduce, $health)
+  public function damageCalculation($target, $attack)
   {
-  	if ($energytype === $weakness) {
-      $dam = $Damage * $multiplier;
-    } elseif ($energytype === $resistance) {
-    	$dam = $Damage - $reduce;
-    } else{
-      $dam = $Damage; 
+    $damage = $this->$attack->damage;
+    if ($this->lighting->Type === $target->weakness->type) {
+      $damage = $damage * $target->weakness->multiplier;
     }
-    $cHealth = $health - $dam ;
-    return ' doet '.$dam. ' damage health is '.$cHealth;
+    if ($this->lighting->Type === $target->resistance->resistance) {
+      $damage = $damage - $target->resistance->reduce;
+    }
+    $health = $target->currentHealth - $damage;
+    return ' doet '.$damage. ' damage. health is '.$health;
   }
 }

@@ -2,12 +2,12 @@
 //makes the weakness for the pokemon
 Class Weakness 
 {
-	public $weakness;
+	public $type;
 	public $multiplier;
 	//get the values for the wekness class 
-	public function __construct($weakness, $multiplier)
+	public function __construct($type, $multiplier)
 	{
-		$this->weakness = $weakness;
+		$this->type = $type;
 		$this->multiplier = $multiplier; 
 	}
 }

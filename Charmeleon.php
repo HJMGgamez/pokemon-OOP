@@ -19,19 +19,18 @@ class Charmeleon extends Pokemon
     $this->move1 = new Moves('Head Butt', 10);
     $this->move2 = new Moves('Flare', 30);
     $this->fire = new Energytype('fire');
-	parent::__construct($name, $this->specie, $this->fire, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
+	parent::__construct($name, $this->specie, $this->energytype, $this->hitpoints, $currentHealth, $this->weakness, $this->resistance, $this->move1 , $this->move2);
   }
-  //will calulate the damage the pokemon takes
-  public static function damageCalculationC($Damage, $energytype, $weakness, $multiplier, $resistance, $reduce, $health)
+  public function damageCalculation($target, $attack)
   {
-  	if ($energytype === $weakness) {
-      $dam = $Damage * $multiplier;
-    } elseif ($energytype === $resistance) {
-    	$dam = $Damage - $reduce;
-    } else{
-      $dam = $Damage; 
+    $damage = $this->$attack->damage;
+    if ($this->fire->Type === $target->weakness->type) {
+      $damage = $damage * $target->weakness->multiplier;
     }
-    $cHealth = $health - $dam ;
-    return ' doet '.$dam. ' damage health is '.$cHealth;
+    if ($this->fire->Type === $target->resistance->resistance) {
+      $damage = $damage - $target->resistance->reduce;
+    }
+    $health = $target->currentHealth - $damage;
+    return ' doet '.$damage. ' damage. health is '.$health;
   }
 }

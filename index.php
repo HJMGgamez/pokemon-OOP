@@ -14,18 +14,19 @@
 		require 'Resistance.php';
 		require 'Moves.php';
 		require 'Energytype.php';
-		//adds the pikachu dave.
+		//adds the pikachu, dave.
 		$dave = new Pikachu(
 			'dave',
 			60
 		);
-		//adds the charmeleon jan.
+		//adds the charmeleon, jan.
 		$jan = new Charmeleon(
 			'jan',
 			60
 		);
-    	echo $jan->name. charmeleon::damageCalculationC($dave->move2->damage,$dave->lighting->Type,$jan->weakness->weakness, $jan->weakness->multiplier, $jan->resistance->resistance, $jan->resistance->reduce, $dave->currentHealth). '<br>';
-    	echo $dave->name. pikachu::damageCalculationP($jan->move2->damage,$jan->fire->Type,$dave->weakness->weakness, $dave->weakness->multiplier, $dave->resistance->resistance, $dave->resistance->reduce, $jan->currentHealth);
+    	echo $jan->name. $jan->damageCalculation($dave, 'move2'). '<br>';
+			echo $dave->name. $dave->damageCalculation($jan, 'move2');
+			var_dump($move2);
 	?>
     <main>
       <section>
