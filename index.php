@@ -7,13 +7,7 @@
   </head>
   <body>
 	<?php 
-		require 'Pokemon.php';
-		require 'Charmeleon.php';
-		require 'Pikachu.php';
-		require 'Weakness.php';
-		require 'Resistance.php';
-		require 'Moves.php';
-		require 'Energytype.php';
+		require 'Init.php';
 		//adds the pikachu, dave.
 		$dave = new Pikachu(
 			'dave',
@@ -24,20 +18,19 @@
 			'jan',
 			60
 		);
-    	echo $jan->name. $jan->damageCalculation($dave, 'move2'). '<br>';
-			echo $dave->name. $dave->damageCalculation($jan, 'move2');
-			var_dump($move2);
+    	echo $jan->name. $jan->attack($dave, 1). '<br>';
+			echo $dave->name. $dave->attack($jan, 1);
 	?>
     <main>
       <section>
         <img src="img/pikachu.jpg" alt="Pikachu">
         <div id="bottom"><div id="top1"></div></div>
-        <p>Name: <?= $dave->name ?><br/>Pokemon: <?= $dave->specie ?></p>
+        <p>Name: <?= $dave->name ?><br/>Pokemon: <?= $dave->getSpecie() ?></p>
       </section>
       <section>
         <img src="img/Charmeleon.jpg" alt="Charmeleon">
         <div id="bottom"><div id="top2"></div></div>
-        <p>Name: <?= $jan->name ?><br/>Pokemon: <?= $jan->specie ?></p>
+        <p>Name: <?= $jan->name ?><br/>Pokemon: <?= $jan->getSpecie() ?></p>
 		</form>
       </section>
     </main>
