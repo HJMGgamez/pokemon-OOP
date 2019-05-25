@@ -4,7 +4,7 @@ class Pokemon
 {
   public $name;
   private $specie;
-  protected $energytype;
+  private $energytype;
   protected $hitpoints;
   protected $currentHealth;
   protected $weakness;
@@ -34,12 +34,12 @@ class Pokemon
       if ($this->energytype->Type === $target->resistance->resistance) {
         $damage -= $target->resistance->reduce;
       }
-      $this->damageCalculation($damage, $target);
+      $target->damageCalculation($damage);
       return $target->currentHealth;
     }
-    private function damageCalculation($damage, $target)
+    private function damageCalculation($damage)
     {
-      $target->currentHealth -= $damage;
+      $this->currentHealth -= $damage;
     }
     public function getSpecie()
     {
